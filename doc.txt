@@ -1,0 +1,12 @@
+1) npm test - to run the tests
+2) allure serve - to see results
+
+
+Founded bugs:
+-Script crashing with using numbers in firstName\lastName fields (example - with 'asd4' in firstName field), thats why negative cases
+for this fields are disabled.
+
+-Script crashing with using symbols in email field (example - with '%$@gmail.com'), thats why negative cases for this field is 
+disabled.
+
+You can run tests without enabling it to approve that it works and then try to enable this parts when bugs will be fixed
