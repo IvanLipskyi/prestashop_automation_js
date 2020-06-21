@@ -11,13 +11,13 @@ exports.config = {
     // ==================
     // Specify Test Files
     // ==================
-    // Define which test specs should run. The pattern is relative to the directory
+    // Define which test tests should run. The pattern is relative to the directory
     // from which `wdio` was called. Notice that, if you are calling `wdio` from an
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+        './src/test/tests/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -30,7 +30,7 @@ exports.config = {
     // Define your capabilities here. WebdriverIO can run multiple capabilities at the same
     // time. Depending on the number of capabilities, WebdriverIO launches several test
     // sessions. Within your capabilities you can overwrite the spec and exclude options in
-    // order to group specific specs to a specific capability.
+    // order to group specific tests to a specific capability.
     //
     // First, you can define how many instances should be started at the same time. Let's
     // say you have 3 different capabilities (Chrome, Firefox, and Safari) and you have
@@ -115,7 +115,7 @@ exports.config = {
     // commands. Instead, they hook themselves up into the test process.
     services: ['selenium-standalone'],
     //
-    // Framework you want to run your specs with.
+    // Framework you want to run your tests with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks.html
     //
@@ -168,7 +168,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // beforeSession: function (config, capabilities, specs) {
+    // beforeSession: function (config, capabilities, tests) {
     // },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
@@ -176,7 +176,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
+    // before: function (capabilities, tests) {
     // },
     /**
      * Runs before a WebdriverIO command gets executed.
@@ -239,7 +239,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // after: function (result, capabilities, specs) {
+    // after: function (result, capabilities, tests) {
     // },
     /**
      * Gets executed right after terminating the webdriver session.
@@ -247,7 +247,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // afterSession: function (config, capabilities, specs) {
+    // afterSession: function (config, capabilities, tests) {
     // },
     /**
      * Gets executed after all workers got shut down and the process is about to exit. An error

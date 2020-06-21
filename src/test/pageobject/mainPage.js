@@ -1,5 +1,3 @@
-const loginPage = require('../pageobject/loginPage');
-
 class MainPage {
 
     get currencySelector() { return $('[action] .current'); } //fixed
@@ -13,6 +11,8 @@ class MainPage {
     get euroButton() {return $("a[title='Евро']")};
     get hryvniaButton() {return $("a[title='Гривна']")};
     get itemPrice() {return $$(".right-block > .content_price > .price.product-price")};
+    get itemPricePreview() {return $$("//ul[@id='homefeatured']//div[@class='right-block']" +
+        "//span[@class='price product-price']")}
     get numberOfShownItemsOnPage() {return $("select#nb_item")};
     get sixtyItemsOnPage() {return $("[value='60']")};
     get selector() {return ("//form[@id='setCurrency']//strong[.='EUR']")};
