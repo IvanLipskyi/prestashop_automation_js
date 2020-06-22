@@ -117,7 +117,7 @@ exports.config = {
     //
     // Framework you want to run your tests with.
     // The following are supported: Mocha, Jasmine, and Cucumber
-    // see also: https://webdriver.io/docs/frameworks.html
+    // see also: npm install webdriverio
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.

@@ -1,5 +1,6 @@
 const allure = require('allure-commandline');
-const testMethods = require('../methods/testMethods');
+const searchPageMethods = require('../methods/searchPageMethods');
+const mainPageMethods = require('../methods/mainPageMethods');
 const assert = require('assert');
 
 describe('Prestashop test cases: ', () => {
@@ -7,48 +8,50 @@ describe('Prestashop test cases: ', () => {
     it('Test run', () => {
 
         console.log("Open  main page of the site");
-        testMethods.openMainPage();
+        mainPageMethods.openMainPage();
 
         console.log("Verify that the price of the goods in section \"Popular goods\" pointed according to selected currency");
-        testMethods.selectCurrencyOnSite("USD");
-        assert(testMethods.verifyCurrencyOnSite("USD"),
+        mainPageMethods.selectCurrencyOnSite("USD");
+        assert(mainPageMethods.verifyCurrencyOnSite("USD"),
             "The currency type of the item doesn't match the selected USD currency in header");
-        testMethods.selectCurrencyOnSite("UAH");
-        assert(testMethods.verifyCurrencyOnSite("UAH"),
+        mainPageMethods.selectCurrencyOnSite("UAH");
+        assert(mainPageMethods.verifyCurrencyOnSite("UAH"),
             "The currency type of the item doesn't match the selected UAH currency in header");
-        testMethods.selectCurrencyOnSite("EUR");
-        assert(testMethods.verifyCurrencyOnSite("EUR"),
+        mainPageMethods.selectCurrencyOnSite("EUR");
+        assert(mainPageMethods.verifyCurrencyOnSite("EUR"),
             "The currency type of the item doesn't match the selected EUR currency in header");
 
         console.log("Select currency UAH");
-        testMethods.selectCurrencyOnSite("UAH");
+        mainPageMethods.selectCurrencyOnSite("UAH");
 
         console.log("Accomplish search in catalogue by word \"dress\"");
-        testMethods.searchForSomething("dress");
-        testMethods.showSixtyItemsOnPage();
+        mainPageMethods.searchForSomething("dress");
+
+        console.log("Switch a number of shown items to 60 to see a full list of found items");
+        searchPageMethods.showSixtyItemsOnPage();
 
         console.log("Verify that the text about found goods equals the real number of headings of found goods");
-        assert.equal(testMethods.getTitleAboutNumberOfFoundItems(),
-            testMethods.getNumberOfTitlesOfFoundItems() + " results have been found.");
-        console.log("The label " + testMethods.getTitleAboutNumberOfFoundItems() + " is displayed correctly. Verified!");
+        assert.equal(searchPageMethods.getTitleAboutNumberOfFoundItems(),
+            searchPageMethods.getNumberOfTitlesOfFoundItems() + " results have been found.");
+        console.log("The label " + searchPageMethods.getTitleAboutNumberOfFoundItems() + " is displayed correctly. Verified!");
 
         console.log("Check that the currency of all goods shown in UAH");
-        assert(testMethods.verifyCurrencyOfAllGoods("UAH"),
+        assert(searchPageMethods.verifyCurrencyOfAllGoods("UAH"),
             "The currency type of the item doesn't match the selected UAH currency in header");
 
         console.log("Set sorting method \"From high to low\"");
-        testMethods.selectSortingMethodFromHighToLow();
+        searchPageMethods.selectSortingMethodFromHighToLow();
 
         console.log("Check that selected sorting method working correctly");
-        assert(testMethods.checkCorrectSortingFromHighToLow(), "Items were sorted not correctly");
+        assert(searchPageMethods.checkCorrectSortingFromHighToLow(), "Items were sorted not correctly");
 
         console.log("Verify that items with discount have labels of discount");
-        assert(testMethods.checkItemsDiscountPresence(),
+        assert(searchPageMethods.checkItemsDiscountPresence(),
             "Some of items don't have discount label, current or regular price.");
 
         console.log("Check the correct calculation of items with discount");
-        testMethods.buyDesiredItem();
-        assert(testMethods.checkDiscountCalculation(), "Some items have an incorrect discount calculation");
+        searchPageMethods.buyDesiredItem();
+        assert(searchPageMethods.checkDiscountCalculation(), "Some items have an incorrect discount calculation");
 
     });
 });
